@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct ResetButton: View {
-    @Binding var timeRemainingCurrently: TimeInterval
-    var onButtonTapped: () -> Void
+    private var timeRemainingCurrently: TimeInterval
+    private var onButtonTapped: () -> Void
+    
+    init(
+        timeRemainingCurrently: TimeInterval,
+        onButtonTapped: @escaping () -> Void
+    ) {
+        self.timeRemainingCurrently = timeRemainingCurrently
+        self.onButtonTapped = onButtonTapped
+    }
     
     var body: some View {
             Text("Reset")

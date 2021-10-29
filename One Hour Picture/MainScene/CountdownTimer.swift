@@ -5,40 +5,39 @@
 //  Created by Kacper Jagiełło on 22/10/2021.
 //
 
+import Combine
 import SwiftUI
 
 struct CountdownTimer: View {
-    @Binding var timeRemaining: TimeInterval
-    @Binding var isAppActive: Bool
+    private var timer: Publishers.Autoconnect<Timer.TimerPublisher>
+    private var timeRemainingCurrently: String
+    private var shouldAnimateBackgroundColor: Bool
+    private var onRefreshCountdownTimerView: () -> Void
     
-    let timer = Timer
-        .publish(
-            every: 1.0,
-            on: .main,
-            in: .common
-        )
-        .autoconnect()
+    init(
+        timer: Publishers.Autoconnect<Timer.TimerPublisher>,
+        timeRemainingCurrently: String,
+        shouldAnimateBackgroundColor: Bool,
+        onRefreshCountdownTimerView: @escaping () -> Void
+    ) {
+        self.timer = timer
+        self.timeRemainingCurrently = timeRemainingCurrently
+        self.shouldAnimateBackgroundColor = shouldAnimateBackgroundColor
+        self.onRefreshCountdownTimerView = onRefreshCountdownTimerView
+    }
 
     var body: some View {
-        Text("\(timeRemainingString(timeRemaining))")
+        Text(timeRemainingCurrently)
             .font(.custom("DS-Digital", size: 60.0))
             .frame(width: 240, height: 90.0)
             .foregroundColor(.white)
-            .background(Color.black)
+            .background(
+                shouldAnimateBackgroundColor ? Color.red : Color.black
+            )
             .cornerRadius(20.0)
             .padding()
             .onReceive(timer) { time in
-                guard isAppActive else { return }
-                if self.timeRemaining > 0 {
-                    self.timeRemaining -= 1
-                }
+                onRefreshCountdownTimerView()
             }
-    }
-    
-    private func timeRemainingString(_ timeRemaining: TimeInterval) -> String {
-        let hours = Int(timeRemaining)/3600
-        let minutes = Int(timeRemaining)/60 % 60
-        let seconds = Int(timeRemaining) % 60
-        return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
 }

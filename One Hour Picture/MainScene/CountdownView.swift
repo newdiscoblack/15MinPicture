@@ -8,32 +8,25 @@
 import SwiftUI
 
 struct CountdownView: View {
-    private var timeRemainingAtTheStart: TimeInterval = .hour
+    @StateObject var viewModel: CountdownViewModel = CountdownViewModel.init()
     
-    @State private var timeRemainingCurrently: TimeInterval
-    @State private var isAppActive: Bool = true
-    
-    init() {
-        _timeRemainingCurrently = State(
-            initialValue: timeRemainingAtTheStart
-        )
-    }
-
     var body: some View {
         VStack {
             Spacer()
             CountdownTimer(
-                timeRemaining: $timeRemainingCurrently,
-                isAppActive: $isAppActive
+                timer: viewModel.timer,
+                timeRemainingCurrently: viewModel.timeRemainingCurrentlyString,
+                shouldAnimateBackgroundColor: viewModel.shouldAnimateBackgroundColor,
+                onRefreshCountdownTimerView: viewModel.refreshCountdownTimerView
             )
             Spacer()
             FaceView(
-                timeRemaining: $timeRemainingCurrently
+                timeRemaining: viewModel.timeRemainingCurrently
             )
             Spacer()
             ResetButton(
-                timeRemainingCurrently: $timeRemainingCurrently,
-                onButtonTapped: resetTimer
+                timeRemainingCurrently: viewModel.timeRemainingCurrently,
+                onButtonTapped: viewModel.resetTimer
             )
             Spacer()
         }
@@ -43,22 +36,14 @@ struct CountdownView: View {
                 .publisher(
                     for: UIApplication.willResignActiveNotification
                 )
-        ) { _ in
-            self.isAppActive = false
-        }
+        ) { _ in viewModel.onWillResignActiveNotification() }
         .onReceive(
             NotificationCenter
                 .default
                 .publisher(
                     for: UIApplication.willEnterForegroundNotification
                 )
-        ) { _ in
-            self.isAppActive = true
-        }
-    }
-    
-    private func resetTimer() {
-        timeRemainingCurrently = timeRemainingAtTheStart
+        ) { _ in viewModel.onWillEnterForegroundNotification() }
     }
 }
 

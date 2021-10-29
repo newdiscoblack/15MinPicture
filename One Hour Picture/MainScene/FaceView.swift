@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct FaceView: View {
-    @Binding var timeRemaining: TimeInterval
+    private var timeRemaining: TimeInterval
+    
+    init(
+        timeRemaining: TimeInterval
+    ) {
+        self.timeRemaining = timeRemaining
+    }
     
     var body: some View {
         HStack {
-            VStack {
-                if timeRemaining == 0 {
-                    Image(systemName: "gift.fill")
-                        .font(.system(size: 80))
-                        .animation(.default)
-                }
-            }
             VStack {
                 Image(systemName: "eyes")
                     .font(.system(size: 50))

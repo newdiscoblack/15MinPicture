@@ -8,12 +8,16 @@
 import Foundation
 
 extension TimeInterval {
-    public static var minute: TimeInterval {
-        return 60
+    public static var twoMinutes: TimeInterval {
+        return 120
     }
     
     public static var fiveMinutes: TimeInterval {
         return 300
+    }
+    
+    public static var fifteenMinutes: TimeInterval {
+        return 900
     }
     
     public static var hour: TimeInterval {

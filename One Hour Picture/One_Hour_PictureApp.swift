@@ -11,7 +11,7 @@ import SwiftUI
 struct One_Hour_PictureApp: App {
     var body: some Scene {
         WindowGroup {
-            CountdownView()
+            CountdownView(viewModel: CountdownViewModel())
         }
     }
 }

@@ -19,6 +19,7 @@
 		E764AE652722DAFD00FD0B9E /* View+isHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764AE642722DAFD00FD0B9E /* View+isHidden.swift */; };
 		E764AE682722E0A400FD0B9E /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764AE672722E0A400FD0B9E /* FaceView.swift */; };
 		E764AE6A2722E0B700FD0B9E /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764AE692722E0B700FD0B9E /* ResetButton.swift */; };
+		E764AE6E272AA28C00FD0B9E /* CountdownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E764AE6D272AA28C00FD0B9E /* CountdownViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E764AE642722DAFD00FD0B9E /* View+isHidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+isHidden.swift"; sourceTree = "<group>"; };
 		E764AE672722E0A400FD0B9E /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
 		E764AE692722E0B700FD0B9E /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
+		E764AE6D272AA28C00FD0B9E /* CountdownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				E764AE292721ABFF00FD0B9E /* CountdownView.swift */,
+				E764AE6D272AA28C00FD0B9E /* CountdownViewModel.swift */,
 				E764AE622722BB8500FD0B9E /* CountdownTimer.swift */,
 				E764AE672722E0A400FD0B9E /* FaceView.swift */,
 				E764AE692722E0B700FD0B9E /* ResetButton.swift */,
@@ -302,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E764AE6E272AA28C00FD0B9E /* CountdownViewModel.swift in Sources */,
 				E764AE652722DAFD00FD0B9E /* View+isHidden.swift in Sources */,
 				E764AE2A2721ABFF00FD0B9E /* CountdownView.swift in Sources */,
 				E764AE632722BB8500FD0B9E /* CountdownTimer.swift in Sources */,
