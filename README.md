@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [Xcode 12.5](https://developer.apple.com/download/) - Make sure you have the latest one.
+- [Xcode 12.2](https://developer.apple.com/download/) - Make sure you use that version at least.
 
 ## Build and Run Project
 
