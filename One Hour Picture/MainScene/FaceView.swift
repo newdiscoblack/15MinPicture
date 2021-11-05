@@ -17,11 +17,12 @@ struct FaceView: View {
     }
     
     var body: some View {
-        HStack {
+        ZStack {
             if timeRemaining == 0 {
                 Image(systemName: "gift.fill")
                     .font(.system(size: 60))
                     .animation(.default)
+                    .foregroundColor(.blue)
             }
             VStack {
                 Image(systemName: "eyes")
@@ -32,7 +33,7 @@ struct FaceView: View {
                     .font(.system(size: 55))
             }
             .animation(.default)
-            .isHidden((timeRemaining == 0))
+            .isHidden(timeRemaining == 0)
         }
     }
 }
