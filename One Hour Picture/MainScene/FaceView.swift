@@ -18,6 +18,11 @@ struct FaceView: View {
     
     var body: some View {
         HStack {
+            if timeRemaining == 0 {
+                Image(systemName: "gift.fill")
+                    .font(.system(size: 60))
+                    .animation(.default)
+            }
             VStack {
                 Image(systemName: "eyes")
                     .font(.system(size: 50))
