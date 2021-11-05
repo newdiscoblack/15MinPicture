@@ -27,6 +27,7 @@ struct FaceView: View {
                     .font(.system(size: 55))
             }
             .animation(.default)
+            .isHidden((timeRemaining == 0))
         }
     }
 }
